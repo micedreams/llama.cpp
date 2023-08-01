@@ -864,3 +864,12 @@ docker run --gpus all -v /path/to/models:/models local/llama.cpp:light-cuda -m /
 - [BLIS](./docs/BLIS.md)
 - [Performance troubleshooting](./docs/token_generation_performance_tips.md)
 - [GGML tips & tricks](https://github.com/ggerganov/llama.cpp/wiki/GGML-Tips-&-Tricks)
+
+
+## Aku note:
+### What worked for me
+Step 1: run LLAMA_METAL=1 make
+
+Step 2: download [model](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/resolve/main/llama-2-13b-chat.ggmlv3.q5_0.bin) from huggingface into this file
+
+Step 3: run ./main -ins -f ./prompts/alpaca.txt  -t 8  -ngl 1  -m llama-2-13b-chat.ggmlv3.q4_0.bin  --color  -c 2048  --temp 0.7  --repeat_penalty 1.1  -s 42  -n -1
